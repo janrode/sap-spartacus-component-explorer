@@ -7,6 +7,8 @@ import {
   Page,
   OrderEntry,
   CmsService,
+  CmsComponent,
+  CmsParagraphComponent,
   ActiveCartService,
   SelectiveCartService,
 } from '@spartacus/core';
@@ -131,14 +133,15 @@ const SelectiveCartServiceProvider = {
   },
 };
 
+const mockCmsComponent: CmsParagraphComponent = {
+  content: '<p>Empty Cart Info (EmptyCartParagraphComponent)</p>',
+};
+
 const CmsServiceProvider = {
   provide: CmsService,
   useClass: class CmsServiceMock implements Partial<CmsService> {
-    // @ts-ignore
-    getComponentData = () =>
-      of({
-        content: '<p>Empty Cart Info (EmptyCartParagraphComponent)</p>',
-      });
+    getComponentData = <T extends CmsComponent | null>(): Observable<T> =>
+      of(mockCmsComponent as T);
     getCurrentPage = (): Observable<Page> => of({});
   },
 };
