@@ -1,8 +1,8 @@
-import { IStory } from '@storybook/angular';
-import { action } from '@storybook/addon-actions';
-import { boolean, number } from '@storybook/addon-knobs';
-import { Observable, of } from 'rxjs';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
+import { IStory } from '@storybook/angular'
+import { action } from '@storybook/addon-actions'
+import { boolean, number } from '@storybook/addon-knobs'
+import { Observable, of } from 'rxjs'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import {
   Address,
   Country,
@@ -11,18 +11,17 @@ import {
   UserPaymentService,
   CheckoutDeliveryService,
   CheckoutPaymentService,
-} from '@spartacus/core';
-import { PaymentFormComponent, PaymentFormModule } from '@spartacus/storefront';
+} from '@spartacus/core'
+import { PaymentFormComponent, PaymentFormModule } from '@spartacus/storefront'
 
-let loading: boolean;
+let loading: boolean
 
+let addressVerificationResult
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
-  useClass: class CheckoutDeliveryServiceMock
-    implements Partial<CheckoutDeliveryService> {
-    getAddressVerificationResults = (): Observable<
-      AddressValidation | string
-    > => of({ decision: 'ACCEPT' });
+  useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
+    getAddressVerificationResults = (): Observable<AddressValidation | string> =>
+      of({ decision: addressVerificationResult })
     getDeliveryAddress = (): Observable<Address> =>
       of({
         firstName: 'Jensen',
@@ -31,25 +30,21 @@ const CheckoutDeliveryServiceProvider = {
         town: 'South Eddie',
         postalCode: 'MT 24603',
         country: { isocode: 'USA' },
-      });
+      })
   },
-};
+}
 
 const UserPaymentServiceProvider = {
   provide: UserPaymentService,
-  useClass: class UserPaymentServiceMock
-    implements Partial<UserPaymentService> {
-    getAllBillingCountries = (): Observable<Country[]> =>
-      of([{ isocode: 'de' }, { isocode: 'USA' }]);
+  useClass: class UserPaymentServiceMock implements Partial<UserPaymentService> {
+    getAllBillingCountries = (): Observable<Country[]> => of([{ isocode: 'de' }, { isocode: 'USA' }])
   },
-};
+}
 
 const CheckoutPaymentServiceProvider = {
   provide: CheckoutPaymentService,
-  useClass: class CheckoutPaymentServiceMock
-    implements Partial<CheckoutPaymentService> {
-    getSetPaymentDetailsResultProcess = (): Observable<unknown> =>
-      of({ loading });
+  useClass: class CheckoutPaymentServiceMock implements Partial<CheckoutPaymentService> {
+    getSetPaymentDetailsResultProcess = (): Observable<unknown> => of({ loading })
     getCardTypes = (): Observable<CardType[]> =>
       of([
         {
@@ -68,27 +63,24 @@ const CheckoutPaymentServiceProvider = {
           code: 'master',
           name: 'Mastercard',
         },
-      ]);
-    loadSupportedCardTypes = () => of([]);
+      ])
+    loadSupportedCardTypes = () => of([])
   },
-};
+}
 
 export default {
   title: 'Checkout/PaymentForm',
   decorators: [
     setupSpartacus(
       [PaymentFormModule],
-      [
-        CheckoutPaymentServiceProvider,
-        CheckoutDeliveryServiceProvider,
-        UserPaymentServiceProvider,
-      ]
+      [CheckoutPaymentServiceProvider, CheckoutDeliveryServiceProvider, UserPaymentServiceProvider]
     ),
   ],
-};
+}
 
 export const Default = (): IStory => {
-  loading = false;
+  addressVerificationResult = null
+  loading = false
   return {
     component: PaymentFormComponent,
     props: {
@@ -98,12 +90,28 @@ export const Default = (): IStory => {
       closeForm: action('closeForm'),
       goBack: action('goBack'),
     },
-  };
-};
+  }
+}
 
-export const Loading = (): IStory => {
-  loading = true;
+export const ReviewSuggestedBillingAddress = (): IStory => {
+  addressVerificationResult = 'REVIEW'
+  loading = false
   return {
     component: PaymentFormComponent,
-  };
-};
+    props: {
+      setAsDefaultField: boolean('setAsDefaultField', true),
+      paymentMethodsCount: number('paymentMethodsCount', 0),
+      setPaymentDetails: action('setPaymentDetails'),
+      closeForm: action('closeForm'),
+      goBack: action('goBack'),
+    },
+  }
+}
+
+export const Loading = (): IStory => {
+  loading = true
+  addressVerificationResult = null
+  return {
+    component: PaymentFormComponent,
+  }
+}

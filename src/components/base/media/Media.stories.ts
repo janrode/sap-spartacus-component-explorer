@@ -1,13 +1,13 @@
-import { IStory } from '@storybook/angular';
-import { action } from '@storybook/addon-actions';
-import { object, select, text } from '@storybook/addon-knobs';
-import { setupSpartacus } from '../../../spartacusStorybookModuleMetadata';
-import { MediaComponent, MediaModule } from '@spartacus/storefront';
+import { IStory } from '@storybook/angular'
+import { action } from '@storybook/addon-actions'
+import { object, select, text } from '@storybook/addon-knobs'
+import { setupSpartacus } from '../../../spartacusStorybookModuleMetadata'
+import { MediaComponent, MediaModule } from '@spartacus/storefront'
 
 export default {
   title: 'Base/Media',
   decorators: [setupSpartacus([MediaModule])],
-};
+}
 
 const mediaContainer = {
   tablet: {
@@ -22,7 +22,7 @@ const mediaContainer = {
     altText: 'widescreen',
     url: 'https://placehold.jp/750x250.png?text=widescreen',
   },
-};
+}
 
 export const Default = (): IStory => ({
   component: MediaComponent,
@@ -32,4 +32,4 @@ export const Default = (): IStory => ({
     loaded: action('loaded'),
     container: object('MediaContainer', mediaContainer),
   },
-});
+})

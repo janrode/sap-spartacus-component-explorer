@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { environment } from '../environments/environment';
+import { Component } from '@angular/core'
+import { environment } from '../environments/environment'
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,6 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'sap-spartacus-component-explorer';
-  spartaVersion = environment.spartaVersion;
+  title = 'sap-spartacus-component-explorer'
+  spartaVersion = environment.spartaVersion
 }

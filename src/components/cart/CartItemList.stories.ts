@@ -1,13 +1,13 @@
-import { IStory } from '@storybook/angular';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
-import { OrderEntry } from '@spartacus/core';
-import { CartItemListComponent, CartSharedModule } from '@spartacus/storefront';
-import { boolean, object } from '@storybook/addon-knobs';
+import { IStory } from '@storybook/angular'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
+import { OrderEntry } from '@spartacus/core'
+import { CartItemListComponent, CartSharedModule } from '@spartacus/storefront'
+import { boolean, object } from '@storybook/addon-knobs'
 
 export default {
   title: 'Cart/CartItemList',
   decorators: [setupSpartacus([CartSharedModule])],
-};
+}
 
 const items: OrderEntry[] = [
   {
@@ -86,7 +86,7 @@ const items: OrderEntry[] = [
       },
     },
   },
-];
+]
 
 export const Default = (): IStory => ({
   component: CartItemListComponent,
@@ -96,4 +96,4 @@ export const Default = (): IStory => ({
     items: object('items', items),
     cartIsLoading: boolean('cartIsLoading', false),
   },
-});
+})

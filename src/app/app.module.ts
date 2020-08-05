@@ -1,14 +1,11 @@
-import {
-  BrowserModule,
-  BrowserTransferStateModule,
-} from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { translations, translationChunksConfig } from '@spartacus/assets';
-import { B2cStorefrontModule } from '@spartacus/storefront';
-import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
+import { translations, translationChunksConfig } from '@spartacus/assets'
+import { B2cStorefrontModule } from '@spartacus/storefront'
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [AppComponent],

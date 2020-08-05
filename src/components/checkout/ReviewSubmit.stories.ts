@@ -1,6 +1,6 @@
-import { IStory } from '@storybook/angular';
-import { Observable, of } from 'rxjs';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
+import { IStory } from '@storybook/angular'
+import { Observable, of } from 'rxjs'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import {
   Cart,
   Address,
@@ -13,12 +13,8 @@ import {
   CheckoutDeliveryService,
   CheckoutPaymentService,
   UserAddressService,
-} from '@spartacus/core';
-import {
-  PromotionService,
-  ReviewSubmitComponent,
-  ReviewSubmitModule,
-} from '@spartacus/storefront';
+} from '@spartacus/core'
+import { PromotionService, ReviewSubmitComponent, ReviewSubmitModule } from '@spartacus/storefront'
 
 const cartEntries: OrderEntry[] = [
   {
@@ -97,12 +93,11 @@ const cartEntries: OrderEntry[] = [
       },
     },
   },
-];
+]
 
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
-  useClass: class CheckoutDeliveryServiceMock
-    implements Partial<CheckoutDeliveryService> {
+  useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
     getDeliveryAddress = (): Observable<Address> =>
       of({
         firstName: 'Jensen',
@@ -111,7 +106,7 @@ const CheckoutDeliveryServiceProvider = {
         town: 'South Eddie',
         postalCode: 'MT 24603',
         country: { isocode: 'USA' },
-      });
+      })
     getSelectedDeliveryMode = (): Observable<DeliveryMode> =>
       of({
         code: '2',
@@ -120,15 +115,14 @@ const CheckoutDeliveryServiceProvider = {
           formattedValue: '19,99€',
         },
         description: '1-2 business days',
-      });
-    loadSupportedDeliveryModes = (): void => {};
+      })
+    loadSupportedDeliveryModes = (): void => {}
   },
-};
+}
 
 const CheckoutPaymentServiceProvider = {
   provide: CheckoutPaymentService,
-  useClass: class CheckoutPaymentServiceMock
-    implements Partial<CheckoutPaymentService> {
+  useClass: class CheckoutPaymentServiceMock implements Partial<CheckoutPaymentService> {
     getPaymentDetails = (): Observable<PaymentDetails> =>
       of({
         id: '1',
@@ -138,24 +132,22 @@ const CheckoutPaymentServiceProvider = {
         cardType: { code: 'visa' },
         expiryMonth: '05',
         expiryYear: '2025',
-      });
+      })
   },
-};
+}
 
 const UserAddressServiceProvider = {
   provide: UserAddressService,
-  useClass: class UserAddressServiceMock
-    implements Partial<UserAddressService> {
-    getCountry = (): Observable<Country> =>
-      of({ isocode: 'DE', name: 'Germany' });
-    loadDeliveryCountries = (): void => {};
+  useClass: class UserAddressServiceMock implements Partial<UserAddressService> {
+    getCountry = (): Observable<Country> => of({ isocode: 'DE', name: 'Germany' })
+    loadDeliveryCountries = (): void => {}
   },
-};
+}
 
 const ActiveCartServiceProvider = {
   provide: ActiveCartService,
   useClass: class ActiveCartServiceMock implements Partial<ActiveCartService> {
-    getActiveCartId = (): Observable<string> => of('ActiveCartId');
+    getActiveCartId = (): Observable<string> => of('ActiveCartId')
     getActive = (): Observable<Cart> =>
       of({
         totalItems: 4,
@@ -177,23 +169,22 @@ const ActiveCartServiceProvider = {
           formattedValue: '10€',
         },
         net: true,
-      });
-    getEntries = (): Observable<OrderEntry[]> => of(cartEntries);
+      })
+    getEntries = (): Observable<OrderEntry[]> => of(cartEntries)
   },
-};
+}
 
 const PromotionServiceProvider = {
   provide: PromotionService,
   useClass: class PromotionServiceMock implements Partial<PromotionService> {
-    getProductPromotionForEntry = (): Observable<PromotionResult[]> =>
-      of([{ description: '10% off, summer sale' }]);
+    getProductPromotionForEntry = (): Observable<PromotionResult[]> => of([{ description: '10% off, summer sale' }])
     getOrderPromotions = (): Observable<PromotionResult[]> =>
       of([
         { description: 'Buy over $100.00 get free shipping' },
         { description: 'Buy over $200.00 get $20.00 discount on cart' },
-      ]);
+      ])
   },
-};
+}
 
 export default {
   title: 'Checkout/ReviewSubmit',
@@ -209,8 +200,8 @@ export default {
       ]
     ),
   ],
-};
+}
 
 export const Default = (): IStory => ({
   component: ReviewSubmitComponent,
-});
+})

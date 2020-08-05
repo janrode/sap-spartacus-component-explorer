@@ -1,13 +1,9 @@
-import { IStory } from '@storybook/angular';
-import { action } from '@storybook/addon-actions';
-import { number, text } from '@storybook/addon-knobs';
-import { setupSpartacus } from '../../../../spartacusStorybookModuleMetadata';
-import {
-  PaginationComponent,
-  PaginationConfig,
-  PaginationModule,
-} from '@spartacus/storefront';
-import { ActivatedRouteProvider } from './ActivatedRouteProvider';
+import { IStory } from '@storybook/angular'
+import { action } from '@storybook/addon-actions'
+import { number, text } from '@storybook/addon-knobs'
+import { setupSpartacus } from '../../../../spartacusStorybookModuleMetadata'
+import { PaginationComponent, PaginationConfig, PaginationModule } from '@spartacus/storefront'
+import { ActivatedRouteProvider } from './ActivatedRouteProvider'
 
 const PaginationConfigProvider = {
   provide: PaginationConfig,
@@ -21,20 +17,15 @@ const PaginationConfigProvider = {
       addFirst: true,
       addLast: true,
       addDots: true,
-    };
+    }
   },
-};
+}
 
 export default {
   title: 'Base/Pagination',
   component: PaginationComponent,
-  decorators: [
-    setupSpartacus(
-      [PaginationModule],
-      [ActivatedRouteProvider, PaginationConfigProvider]
-    ),
-  ],
-};
+  decorators: [setupSpartacus([PaginationModule], [ActivatedRouteProvider, PaginationConfigProvider])],
+}
 
 export const Default = (): IStory => ({
   component: PaginationComponent,
@@ -48,4 +39,4 @@ export const Default = (): IStory => ({
       totalPages: number('totalPages', 100),
     },
   },
-});
+})

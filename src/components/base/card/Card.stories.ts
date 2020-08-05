@@ -1,14 +1,14 @@
-import { IStory } from '@storybook/angular';
-import { action } from '@storybook/addon-actions';
-import { text, boolean, array } from '@storybook/addon-knobs';
-import { setupSpartacus } from '../../../spartacusStorybookModuleMetadata';
-import { CardComponent, CardModule, ICON_TYPE } from '@spartacus/storefront';
+import { IStory } from '@storybook/angular'
+import { action } from '@storybook/addon-actions'
+import { text, boolean, array } from '@storybook/addon-knobs'
+import { setupSpartacus } from '../../../spartacusStorybookModuleMetadata'
+import { CardComponent, CardModule, ICON_TYPE } from '@spartacus/storefront'
 
 export default {
   title: 'Card',
   decorators: [setupSpartacus([CardModule])],
   component: CardComponent,
-};
+}
 
 const template = `
 <div style="width:600px">
@@ -24,7 +24,7 @@ const template = `
     [isDefault]="isDefault"
     [editMode]="editMode"
   ></cx-card>
-</div>`;
+</div>`
 
 const defaultProps = (): Record<string, unknown> => ({
   border: boolean('Border', true),
@@ -32,7 +32,7 @@ const defaultProps = (): Record<string, unknown> => ({
   isDefault: boolean('isDefault', false),
   editMode: boolean('editMode', false),
   click: action,
-});
+})
 
 export const CreditCard = (): IStory => ({
   component: CardComponent,
@@ -54,7 +54,7 @@ export const CreditCard = (): IStory => ({
       ],
     },
   },
-});
+})
 
 export const AddressCard = (): IStory => ({
   component: CardComponent,
@@ -74,4 +74,4 @@ export const AddressCard = (): IStory => ({
       ],
     },
   },
-});
+})

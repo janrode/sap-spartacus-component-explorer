@@ -1,10 +1,10 @@
-import { Provider } from '@angular/core';
-import { CommonModule, APP_BASE_HREF } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { B2cStorefrontModule } from '@spartacus/storefront';
-import { translationChunksConfig, translations } from '@spartacus/assets';
-import { IStory, moduleMetadata } from '@storybook/angular';
-import { StoryFn } from '@storybook/addons';
+import { Provider } from '@angular/core'
+import { CommonModule, APP_BASE_HREF } from '@angular/common'
+import { RouterModule } from '@angular/router'
+import { B2cStorefrontModule } from '@spartacus/storefront'
+import { translationChunksConfig, translations } from '@spartacus/assets'
+import { IStory, moduleMetadata } from '@storybook/angular'
+import { StoryFn } from '@storybook/addons'
 
 export function setupSpartacus(
   modules: CommonModule[],
@@ -44,5 +44,5 @@ export function setupSpartacus(
       },
       ...providers,
     ],
-  });
+  })
 }

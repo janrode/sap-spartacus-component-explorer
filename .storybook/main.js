@@ -9,4 +9,4 @@ module.exports = {
     '@storybook/theming',
     '@storybook/addon-backgrounds/register',
   ],
-};
+}

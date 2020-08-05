@@ -1,12 +1,12 @@
-import { IStory } from '@storybook/angular';
-import { object } from '@storybook/addon-knobs';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
-import { PromotionsComponent, PromotionsModule } from '@spartacus/storefront';
+import { IStory } from '@storybook/angular'
+import { object } from '@storybook/addon-knobs'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
+import { PromotionsComponent, PromotionsModule } from '@spartacus/storefront'
 
 export default {
   title: 'Checkout/Promotions',
   decorators: [setupSpartacus([PromotionsModule])],
-};
+}
 
 export const Default = (): IStory => ({
   component: PromotionsComponent,
@@ -17,4 +17,4 @@ export const Default = (): IStory => ({
       { description: 'Buy over $100.00 get everything for free' },
     ]),
   },
-});
+})

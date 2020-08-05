@@ -1,7 +1,7 @@
-import logo from './assets/spartacus-blue.png';
-import { addons } from '@storybook/addons';
-import { themes } from '@storybook/theming';
-import { create } from '@storybook/theming/create';
+import logo from './assets/spartacus-blue.png'
+import { addons } from '@storybook/addons'
+import { themes } from '@storybook/theming'
+import { create } from '@storybook/theming/create'
 
 const theme = create({
   base: 'light',
@@ -11,8 +11,8 @@ const theme = create({
 
   brandTitle: 'Spartacus Component Explorer',
   brandImage: logo,
-});
+})
 
 addons.setConfig({
   theme,
-});
+})

@@ -1,14 +1,11 @@
-import { IStory } from '@storybook/angular';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
-import {
-  AddressFormModule,
-  SuggestedAddressDialogComponent,
-} from '@spartacus/storefront';
+import { IStory } from '@storybook/angular'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
+import { AddressFormModule, SuggestedAddressDialogComponent } from '@spartacus/storefront'
 
 export default {
   title: 'Checkout/SuggestedAddressDialog',
   decorators: [setupSpartacus([AddressFormModule])],
-};
+}
 
 export const Default = (): IStory => ({
   component: SuggestedAddressDialogComponent,
@@ -34,4 +31,4 @@ export const Default = (): IStory => ({
       region: { isocode: 'USA' },
     },
   },
-});
+})

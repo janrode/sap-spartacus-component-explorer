@@ -2,14 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { dependencies } from '../../package.json';
+import { dependencies } from '../../package.json'
 
 export const environment = {
   production: false,
-  occBaseUrl:
-    'https://api.c39j2-walkersde1-d3-public.model-t.cc.commerce.ondemand.com',
+  occBaseUrl: 'https://api.c39j2-walkersde1-d3-public.model-t.cc.commerce.ondemand.com',
   spartaVersion: dependencies['@spartacus/core'],
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -1,8 +1,8 @@
-import { IStory } from '@storybook/angular';
-import { ModalService } from '@spartacus/storefront';
-import { select, boolean, text } from '@storybook/addon-knobs';
-import { Component, Input, NgModule } from '@angular/core';
-import { setupSpartacus } from '../../../spartacusStorybookModuleMetadata';
+import { IStory } from '@storybook/angular'
+import { ModalService } from '@spartacus/storefront'
+import { select, boolean, text } from '@storybook/addon-knobs'
+import { Component, Input, NgModule } from '@angular/core'
+import { setupSpartacus } from '../../../spartacusStorybookModuleMetadata'
 
 @Component({
   template: `<div>
@@ -12,12 +12,12 @@ import { setupSpartacus } from '../../../spartacusStorybookModuleMetadata';
 })
 class ModalContentComponent {
   @Input()
-  content: string;
+  content: string
 
   constructor(protected modalService: ModalService) {}
 
   dismissModal(): void {
-    this.modalService.dismissActiveModal('a');
+    this.modalService.dismissActiveModal('a')
   }
 }
 
@@ -26,24 +26,24 @@ class ModalContentComponent {
 })
 class ModalHostComponent {
   @Input()
-  size: string;
+  size: string
   @Input()
-  centered: boolean;
+  centered: boolean
   @Input()
-  content: string;
+  content: string
 
   constructor(protected modalService: ModalService) {
-    this.openModal();
+    this.openModal()
   }
 
   openModal(): void {
     const modalRef = this.modalService.open(ModalContentComponent, {
       centered: this.centered,
       size: this.size,
-    });
+    })
 
-    const modalInstance = modalRef.componentInstance as Record<string, unknown>;
-    modalInstance.content = this.content;
+    const modalInstance = modalRef.componentInstance as Record<string, unknown>
+    modalInstance.content = this.content
   }
 }
 
@@ -57,7 +57,7 @@ class ModalHostModule {}
 export default {
   title: 'Base/Modal',
   decorators: [setupSpartacus([ModalHostModule], [])],
-};
+}
 
 export const Default = (): IStory => ({
   component: ModalHostComponent,
@@ -66,4 +66,4 @@ export const Default = (): IStory => ({
     centered: boolean('centered', true),
     content: text('content', 'This is the modal content'),
   },
-});
+})

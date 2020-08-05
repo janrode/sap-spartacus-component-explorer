@@ -1,13 +1,10 @@
-import { IStory } from '@storybook/angular';
-import { Observable, of } from 'rxjs';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
-import { DeliveryMode, CheckoutDeliveryService } from '@spartacus/core';
-import {
-  DeliveryModeComponent,
-  DeliveryModeModule,
-} from '@spartacus/storefront';
+import { IStory } from '@storybook/angular'
+import { Observable, of } from 'rxjs'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
+import { DeliveryMode, CheckoutDeliveryService } from '@spartacus/core'
+import { DeliveryModeComponent, DeliveryModeModule } from '@spartacus/storefront'
 
-let deliveryModes: DeliveryMode[];
+let deliveryModes: DeliveryMode[]
 const supportedDeliveryModes: DeliveryMode[] = [
   {
     code: '1',
@@ -33,36 +30,31 @@ const supportedDeliveryModes: DeliveryMode[] = [
     },
     description: 'Same business day if order is placed before 15.00',
   },
-];
+]
 
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
-  useClass: class CheckoutDeliveryServiceMock
-    implements Partial<CheckoutDeliveryService> {
-    getSupportedDeliveryModes = (): Observable<DeliveryMode[]> =>
-      of(deliveryModes);
-    getSelectedDeliveryMode = (): Observable<DeliveryMode> =>
-      of(supportedDeliveryModes[1]);
+  useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
+    getSupportedDeliveryModes = (): Observable<DeliveryMode[]> => of(deliveryModes)
+    getSelectedDeliveryMode = (): Observable<DeliveryMode> => of(supportedDeliveryModes[1])
   },
-};
+}
 
 export default {
   title: 'Checkout/DeliveryMode',
-  decorators: [
-    setupSpartacus([DeliveryModeModule], [CheckoutDeliveryServiceProvider]),
-  ],
-};
+  decorators: [setupSpartacus([DeliveryModeModule], [CheckoutDeliveryServiceProvider])],
+}
 
 export const Default = (): IStory => {
-  deliveryModes = supportedDeliveryModes;
+  deliveryModes = supportedDeliveryModes
   return {
     component: DeliveryModeComponent,
-  };
-};
+  }
+}
 
 export const Loading = (): IStory => {
-  deliveryModes = [];
+  deliveryModes = []
   return {
     component: DeliveryModeComponent,
-  };
-};
+  }
+}

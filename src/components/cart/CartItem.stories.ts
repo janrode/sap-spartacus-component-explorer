@@ -1,31 +1,24 @@
-import { IStory } from '@storybook/angular';
-import { boolean, object } from '@storybook/addon-knobs';
-import { Observable, of } from 'rxjs';
-import { FormControl } from '@angular/forms';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
-import { OrderEntry, PromotionResult } from '@spartacus/core';
-import {
-  CartItemComponent,
-  CartSharedModule,
-  PromotionService,
-} from '@spartacus/storefront';
+import { IStory } from '@storybook/angular'
+import { boolean, object } from '@storybook/addon-knobs'
+import { Observable, of } from 'rxjs'
+import { FormControl } from '@angular/forms'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
+import { OrderEntry, PromotionResult } from '@spartacus/core'
+import { CartItemComponent, CartSharedModule, PromotionService } from '@spartacus/storefront'
 
 const PromotionServiceProvider = {
   provide: PromotionService,
   useClass: class PromotionServiceMock implements Partial<PromotionService> {
     getProductPromotionForEntry = (): Observable<PromotionResult[]> => {
-      return of([
-        { description: 'AppliedProductPromotion1' },
-        { description: 'AppliedProductPromotion2' },
-      ]);
-    };
+      return of([{ description: 'AppliedProductPromotion1' }, { description: 'AppliedProductPromotion2' }])
+    }
   },
-};
+}
 
 export default {
   title: 'Cart/CartItem',
   decorators: [setupSpartacus([CartSharedModule], [PromotionServiceProvider])],
-};
+}
 
 const item: OrderEntry = {
   entryNumber: 2,
@@ -63,7 +56,7 @@ const item: OrderEntry = {
       stockLevelStatus: 'inStock',
     },
   },
-};
+}
 
 export const Default = (): IStory => ({
   component: CartItemComponent,
@@ -77,7 +70,7 @@ export const Default = (): IStory => ({
     }),
     quantityControl: new FormControl('21'),
   },
-});
+})
 
 export const Compact = (): IStory => ({
   component: CartItemComponent,
@@ -86,7 +79,7 @@ export const Compact = (): IStory => ({
     item: object('item', item),
     quantityControl: new FormControl('21'),
   },
-});
+})
 
 export const SaveForLater = (): IStory => ({
   component: CartItemComponent,
@@ -98,4 +91,4 @@ export const SaveForLater = (): IStory => ({
     }),
     quantityControl: new FormControl('21'),
   },
-});
+})

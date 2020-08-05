@@ -1,6 +1,6 @@
-import { text } from '@storybook/addon-knobs';
-import { Observable, of } from 'rxjs';
-import { PageMeta, PageMetaService } from '@spartacus/core';
+import { text } from '@storybook/addon-knobs'
+import { Observable, of } from 'rxjs'
+import { PageMeta, PageMetaService } from '@spartacus/core'
 
 export const PageMetaServiceProvider = {
   provide: PageMetaService,
@@ -15,7 +15,7 @@ export const PageMetaServiceProvider = {
         ],
         heading: text('heading', 'VAUDE'),
         title: 'VAUDE',
-      });
+      })
     }
   },
-};
+}

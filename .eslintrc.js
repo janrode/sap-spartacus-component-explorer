@@ -24,14 +24,8 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'import', '@angular-eslint'],
   rules: {
-    '@angular-eslint/directive-selector': [
-      'error',
-      { type: 'attribute', prefix: 'app', style: 'camelCase' },
-    ],
-    '@angular-eslint/component-selector': [
-      'error',
-      { type: 'element', prefix: 'app', style: 'kebab-case' },
-    ],
+    '@angular-eslint/directive-selector': ['error', { type: 'attribute', prefix: 'app', style: 'camelCase' }],
+    '@angular-eslint/component-selector': ['error', { type: 'element', prefix: 'app', style: 'kebab-case' }],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/no-empty-function': [
@@ -78,4 +72,4 @@ module.exports = {
       },
     },
   ],
-};
+}

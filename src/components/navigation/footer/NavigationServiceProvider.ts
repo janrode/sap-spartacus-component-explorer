@@ -1,5 +1,5 @@
-import { Observable, of } from 'rxjs';
-import { NavigationNode, NavigationService } from '@spartacus/storefront';
+import { Observable, of } from 'rxjs'
+import { NavigationNode, NavigationService } from '@spartacus/storefront'
 
 export const NavigationServiceProvider = {
   provide: NavigationService,
@@ -36,7 +36,7 @@ export const NavigationServiceProvider = {
           },
         ],
         title: 'title',
-      });
+      })
     }
   },
-};
+}

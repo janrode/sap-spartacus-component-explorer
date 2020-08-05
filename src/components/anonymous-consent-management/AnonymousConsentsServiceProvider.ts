@@ -1,28 +1,20 @@
-import { action } from '@storybook/addon-actions';
-import { Observable, of } from 'rxjs';
-import {
-  ConsentTemplate,
-  AnonymousConsent,
-  ANONYMOUS_CONSENT_STATUS,
-  AnonymousConsentsService,
-} from '@spartacus/core';
+import { action } from '@storybook/addon-actions'
+import { Observable, of } from 'rxjs'
+import { ConsentTemplate, AnonymousConsent, ANONYMOUS_CONSENT_STATUS, AnonymousConsentsService } from '@spartacus/core'
 
-class AnonymousConsentsServiceMock
-  implements Partial<AnonymousConsentsService> {
-  giveConsent = action('giveConsent');
-  withdrawConsent = action('withdrawConsent');
-  toggleBannerDismissed = action(
-    'AnonymousConsentsService.toggleBannerDismissed'
-  );
-  isConsentGiven = (): boolean => true;
-  isConsentWithdrawn = (): boolean => false;
-  isBannerVisible = (): Observable<boolean> => of(true);
-  getLoadTemplatesLoading = (): Observable<boolean> => of(false);
+class AnonymousConsentsServiceMock implements Partial<AnonymousConsentsService> {
+  giveConsent = action('giveConsent')
+  withdrawConsent = action('withdrawConsent')
+  toggleBannerDismissed = action('AnonymousConsentsService.toggleBannerDismissed')
+  isConsentGiven = (): boolean => true
+  isConsentWithdrawn = (): boolean => false
+  isBannerVisible = (): Observable<boolean> => of(true)
+  getLoadTemplatesLoading = (): Observable<boolean> => of(false)
 
   giveAllConsents = (): Observable<ConsentTemplate[]> => {
-    action('AnonymousConsentsService.giveAllConsents')();
-    return this.getTemplates();
-  };
+    action('AnonymousConsentsService.giveAllConsents')()
+    return this.getTemplates()
+  }
 
   getTemplates(): Observable<ConsentTemplate[]> {
     return of([
@@ -47,7 +39,7 @@ class AnonymousConsentsServiceMock
         name: 'I approve to this sample STORE USER INFORMATION consent',
         version: 0,
       },
-    ]);
+    ])
   }
 
   getConsents(): Observable<AnonymousConsent[]> {
@@ -66,11 +58,11 @@ class AnonymousConsentsServiceMock
         version: 0,
         consentState: ANONYMOUS_CONSENT_STATUS.GIVEN,
       },
-    ]);
+    ])
   }
 }
 
 export const AnonymousConsentsServiceProvider = {
   provide: AnonymousConsentsService,
   useClass: AnonymousConsentsServiceMock,
-};
+}

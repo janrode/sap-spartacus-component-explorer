@@ -1,5 +1,5 @@
-import '!style-loader!css-loader!sass-loader!./scss-loader.scss';
-import { addParameters } from '@storybook/angular';
+import '!style-loader!css-loader!sass-loader!./scss-loader.scss'
+import { addParameters } from '@storybook/angular'
 
 addParameters({
   options: {
@@ -9,4 +9,4 @@ addParameters({
      */
     showRoots: true,
   },
-});
+})

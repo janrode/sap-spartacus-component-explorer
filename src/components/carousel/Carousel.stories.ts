@@ -1,13 +1,13 @@
-import { IStory } from '@storybook/angular';
-import { of } from 'rxjs';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
-import { CarouselComponent, CarouselModule } from '@spartacus/storefront';
+import { IStory } from '@storybook/angular'
+import { of } from 'rxjs'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
+import { CarouselComponent, CarouselModule } from '@spartacus/storefront'
 
 export default {
   title: 'Carousel',
   decorators: [setupSpartacus([CarouselModule])],
   component: CarouselComponent,
-};
+}
 
 export const Default = (): IStory => ({
   component: CarouselComponent,
@@ -34,4 +34,4 @@ export const Default = (): IStory => ({
       of({ url: 'http://placehold.jp/250x250.png?text=product10' }),
     ],
   },
-});
+})

@@ -1,7 +1,7 @@
-import { IStory } from '@storybook/angular';
-import { action } from '@storybook/addon-actions';
-import { Observable, of } from 'rxjs';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
+import { IStory } from '@storybook/angular'
+import { action } from '@storybook/addon-actions'
+import { Observable, of } from 'rxjs'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import {
   Cart,
   OrderEntry,
@@ -9,16 +9,12 @@ import {
   ActiveCartService,
   AuthService,
   SelectiveCartService,
-} from '@spartacus/core';
-import {
-  CartDetailsComponent,
-  CartDetailsModule,
-  PromotionService,
-} from '@spartacus/storefront';
+} from '@spartacus/core'
+import { CartDetailsComponent, CartDetailsModule, PromotionService } from '@spartacus/storefront'
 
-const isUserLoggedIn = true;
+const isUserLoggedIn = true
 
-let cartEntries: OrderEntry[];
+let cartEntries: OrderEntry[]
 const defaultCartEntries: OrderEntry[] = [
   {
     entryNumber: 0,
@@ -96,82 +92,74 @@ const defaultCartEntries: OrderEntry[] = [
       },
     },
   },
-];
+]
 
 const ActiveCartServiceProvider = {
   provide: ActiveCartService,
   useClass: class ActiveCartServiceMock implements Partial<ActiveCartService> {
-    removeEntry = action('ActiveCartService:removeEntry');
-    updateEntry = action('ActiveCartService:updateEntry');
-    getActiveCartId = (): Observable<string> => of('ActiveCartId');
+    removeEntry = action('ActiveCartService:removeEntry')
+    updateEntry = action('ActiveCartService:updateEntry')
+    getActiveCartId = (): Observable<string> => of('ActiveCartId')
     getActive = (): Observable<Cart> =>
       of({
         totalItems: 4,
         code: '0000179210',
-      });
-    getEntries = (): Observable<OrderEntry[]> => of(cartEntries);
-    isStable = (): Observable<boolean> => of(true);
+      })
+    getEntries = (): Observable<OrderEntry[]> => of(cartEntries)
+    isStable = (): Observable<boolean> => of(true)
   },
-};
+}
 
 const SelectiveCartServiceProvider = {
   provide: SelectiveCartService,
-  useClass: class SelectiveCartServiceMock
-    implements Partial<SelectiveCartService> {
-    addEntry = action('SelectiveCartServiceProvider:addEntry');
-    isEnabled = (): boolean => true;
-    getLoaded = (): Observable<boolean> => of(true);
+  useClass: class SelectiveCartServiceMock implements Partial<SelectiveCartService> {
+    addEntry = action('SelectiveCartServiceProvider:addEntry')
+    isEnabled = (): boolean => true
+    getLoaded = (): Observable<boolean> => of(true)
   },
-};
+}
 
 const PromotionServiceProvider = {
   provide: PromotionService,
   useClass: class PromotionServiceMock implements Partial<PromotionService> {
-    getOrderPromotionsFromCart = (): Observable<PromotionResult[]> =>
-      of(Array<PromotionResult>());
-    getProductPromotionForEntry = (): Observable<PromotionResult[]> =>
-      of(Array<PromotionResult>());
+    getOrderPromotionsFromCart = (): Observable<PromotionResult[]> => of(Array<PromotionResult>())
+    getProductPromotionForEntry = (): Observable<PromotionResult[]> => of(Array<PromotionResult>())
     getOrderPromotions = (): Observable<PromotionResult[]> =>
       of([
         { description: 'Buy over $100.00 get free shipping' },
         { description: 'Buy over $200.00 get $20.00 discount on cart' },
-      ]);
+      ])
   },
-};
+}
 
 const AuthServiceProvider = {
   provide: AuthService,
   useClass: class AuthServiceMock implements Partial<AuthService> {
-    getOccUserId = (): Observable<string> => of('id');
-    isUserLoggedIn = (): Observable<boolean> => of(isUserLoggedIn);
+    getOccUserId = (): Observable<string> => of('id')
+    isUserLoggedIn = (): Observable<boolean> => of(isUserLoggedIn)
   },
-};
+}
 
 export default {
   title: 'Cart/CartDetails',
   decorators: [
     setupSpartacus(
       [CartDetailsModule],
-      [
-        ActiveCartServiceProvider,
-        PromotionServiceProvider,
-        SelectiveCartServiceProvider,
-        AuthServiceProvider,
-      ]
+      [ActiveCartServiceProvider, PromotionServiceProvider, SelectiveCartServiceProvider, AuthServiceProvider]
     ),
   ],
-};
+}
 
 export const Default = (): IStory => {
-  cartEntries = defaultCartEntries;
+  cartEntries = defaultCartEntries
   return {
     component: CartDetailsComponent,
-  };
-};
+  }
+}
 
 export const EmptyCart = (): IStory => {
-  cartEntries = [];
+  cartEntries = []
   return {
     component: CartDetailsComponent,
-  };
-};
+  }
+}

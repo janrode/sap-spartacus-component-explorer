@@ -1,6 +1,6 @@
-import { IStory } from '@storybook/angular';
-import { Observable, of } from 'rxjs';
-import { setupSpartacus } from '../../spartacusStorybookModuleMetadata';
+import { IStory } from '@storybook/angular'
+import { Observable, of } from 'rxjs'
+import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import {
   Cart,
   Address,
@@ -12,21 +12,15 @@ import {
   CheckoutDeliveryService,
   CheckoutPaymentService,
   UserPaymentService,
-} from '@spartacus/core';
-import {
-  PaymentMethodComponent,
-  PaymentMethodModule,
-} from '@spartacus/storefront';
+} from '@spartacus/core'
+import { PaymentMethodComponent, PaymentMethodModule } from '@spartacus/storefront'
 
-let loading: boolean;
+let loading: boolean
 
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
-  useClass: class CheckoutDeliveryServiceMock
-    implements Partial<CheckoutDeliveryService> {
-    getAddressVerificationResults = (): Observable<
-      AddressValidation | string
-    > => of({ decision: 'ACCEPT' });
+  useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
+    getAddressVerificationResults = (): Observable<AddressValidation | string> => of({ decision: 'ACCEPT' })
     getDeliveryAddress = (): Observable<Address> =>
       of({
         firstName: 'Jensen',
@@ -35,16 +29,15 @@ const CheckoutDeliveryServiceProvider = {
         town: 'South Eddie',
         postalCode: 'MT 24603',
         country: { isocode: 'USA' },
-      });
+      })
   },
-};
+}
 
 const UserPaymentServiceProvider = {
   provide: UserPaymentService,
-  useClass: class UserPaymentServiceMock
-    implements Partial<UserPaymentService> {
-    getPaymentMethodsLoading = (): Observable<boolean> => of(loading);
-    loadPaymentMethods = (): void => {};
+  useClass: class UserPaymentServiceMock implements Partial<UserPaymentService> {
+    getPaymentMethodsLoading = (): Observable<boolean> => of(loading)
+    loadPaymentMethods = (): void => {}
     getPaymentMethods = (): Observable<PaymentDetails[]> =>
       of([
         {
@@ -65,19 +58,16 @@ const UserPaymentServiceProvider = {
           expiryMonth: '01',
           expiryYear: '2020',
         },
-      ]);
-    getAllBillingCountries = (): Observable<Country[]> =>
-      of([{ isocode: 'de' }, { isocode: 'USA' }]);
+      ])
+    getAllBillingCountries = (): Observable<Country[]> => of([{ isocode: 'de' }, { isocode: 'USA' }])
   },
-};
+}
 
 const CheckoutPaymentServiceProvider = {
   provide: CheckoutPaymentService,
-  useClass: class CheckoutPaymentServiceMock
-    implements Partial<CheckoutPaymentService> {
-    getSetPaymentDetailsResultProcess = (): Observable<unknown> =>
-      of({ loading });
-    paymentProcessSuccess = (): void => {};
+  useClass: class CheckoutPaymentServiceMock implements Partial<CheckoutPaymentService> {
+    getSetPaymentDetailsResultProcess = (): Observable<unknown> => of({ loading })
+    paymentProcessSuccess = (): void => {}
     getCardTypes = (): Observable<CardType[]> =>
       of([
         {
@@ -96,21 +86,21 @@ const CheckoutPaymentServiceProvider = {
           code: 'master',
           name: 'Mastercard',
         },
-      ]);
-    getPaymentDetails = (): Observable<PaymentDetails> => of({ id: '1' });
-    setPaymentDetails = (): void => {};
-    loadSupportedCardTypes = (): void => {};
+      ])
+    getPaymentDetails = (): Observable<PaymentDetails> => of({ id: '1' })
+    setPaymentDetails = (): void => {}
+    loadSupportedCardTypes = (): void => {}
   },
-};
+}
 
 const ActiveCartServiceProvider = {
   provide: ActiveCartService,
   useClass: class ActiveCartServiceMock implements Partial<ActiveCartService> {
-    getActiveCartId = (): Observable<string> => of('ActiveCartId');
-    getActive = (): Observable<Cart> => of({});
-    isGuestCart = (): boolean => false;
+    getActiveCartId = (): Observable<string> => of('ActiveCartId')
+    getActive = (): Observable<Cart> => of({})
+    isGuestCart = (): boolean => false
   },
-};
+}
 
 export default {
   title: 'Checkout/PaymentMethod',
@@ -125,18 +115,18 @@ export default {
       ]
     ),
   ],
-};
+}
 
 export const Default = (): IStory => {
-  loading = false;
+  loading = false
   return {
     component: PaymentMethodComponent,
-  };
-};
+  }
+}
 
 export const Loading = (): IStory => {
-  loading = true;
+  loading = true
   return {
     component: PaymentMethodComponent,
-  };
-};
+  }
+}
