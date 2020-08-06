@@ -24,7 +24,9 @@ const PaginationConfigProvider = {
 export default {
   title: 'Base/Pagination',
   component: PaginationComponent,
-  decorators: [setupSpartacus([PaginationModule], [ActivatedRouteProvider, PaginationConfigProvider])],
+  decorators: [
+    setupSpartacus([PaginationModule], [ActivatedRouteProvider, PaginationConfigProvider]),
+  ],
 }
 
 export const Default = (): IStory => ({

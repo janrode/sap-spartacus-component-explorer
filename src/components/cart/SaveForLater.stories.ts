@@ -136,7 +136,7 @@ const mockCmsComponent: CmsParagraphComponent = {
 const CmsServiceProvider = {
   provide: CmsService,
   useClass: class CmsServiceMock implements Partial<CmsService> {
-    getComponentData = <T extends CmsComponent>(): Observable<T> => of((<CmsParagraphComponent>{}) as T)
+    getComponentData = <T extends CmsComponent>(): Observable<T> => of(mockCmsComponent as T)
     getCurrentPage = (): Observable<Page> => of({})
   },
 }
@@ -144,7 +144,10 @@ const CmsServiceProvider = {
 export default {
   title: 'Cart/SaveForLater',
   decorators: [
-    setupSpartacus([SaveForLaterModule], [ActiveCartServiceProvider, SelectiveCartServiceProvider, CmsServiceProvider]),
+    setupSpartacus(
+      [SaveForLaterModule],
+      [ActiveCartServiceProvider, SelectiveCartServiceProvider, CmsServiceProvider]
+    ),
   ],
 }
 

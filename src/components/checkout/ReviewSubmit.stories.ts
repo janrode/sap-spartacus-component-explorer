@@ -177,7 +177,8 @@ const ActiveCartServiceProvider = {
 const PromotionServiceProvider = {
   provide: PromotionService,
   useClass: class PromotionServiceMock implements Partial<PromotionService> {
-    getProductPromotionForEntry = (): Observable<PromotionResult[]> => of([{ description: '10% off, summer sale' }])
+    getProductPromotionForEntry = (): Observable<PromotionResult[]> =>
+      of([{ description: '10% off, summer sale' }])
     getOrderPromotions = (): Observable<PromotionResult[]> =>
       of([
         { description: 'Buy over $100.00 get free shipping' },

@@ -10,7 +10,10 @@ const PromotionServiceProvider = {
   provide: PromotionService,
   useClass: class PromotionServiceMock implements Partial<PromotionService> {
     getProductPromotionForEntry = (): Observable<PromotionResult[]> => {
-      return of([{ description: 'AppliedProductPromotion1' }, { description: 'AppliedProductPromotion2' }])
+      return of([
+        { description: 'AppliedProductPromotion1' },
+        { description: 'AppliedProductPromotion2' },
+      ])
     }
   },
 }

@@ -19,7 +19,9 @@ const ngExpressEngine = NgExpressEngineDecorator.get(engine)
 export function app() {
   const server = express()
   const distFolder = join(process.cwd(), 'dist/sap-spartacus-component-explorer/browser')
-  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index'
+  const indexHtml = existsSync(join(distFolder, 'index.original.html'))
+    ? 'index.original.html'
+    : 'index'
 
   server.engine(
     'html',

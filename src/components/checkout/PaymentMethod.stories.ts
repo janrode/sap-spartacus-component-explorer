@@ -20,7 +20,8 @@ let loading: boolean
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
   useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
-    getAddressVerificationResults = (): Observable<AddressValidation | string> => of({ decision: 'ACCEPT' })
+    getAddressVerificationResults = (): Observable<AddressValidation | string> =>
+      of({ decision: 'ACCEPT' })
     getDeliveryAddress = (): Observable<Address> =>
       of({
         firstName: 'Jensen',
@@ -59,7 +60,8 @@ const UserPaymentServiceProvider = {
           expiryYear: '2020',
         },
       ])
-    getAllBillingCountries = (): Observable<Country[]> => of([{ isocode: 'de' }, { isocode: 'USA' }])
+    getAllBillingCountries = (): Observable<Country[]> =>
+      of([{ isocode: 'de' }, { isocode: 'USA' }])
   },
 }
 

@@ -2,8 +2,39 @@ import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import { AddressFormComponent, AddressFormModule } from '@spartacus/storefront'
 import { action } from '@storybook/addon-actions'
 import { boolean, text } from '@storybook/addon-knobs'
-import { UserAddressService, UserService } from '@spartacus/core'
+import { Country, Region, UserAddressService, UserService } from '@spartacus/core'
 import { of } from 'rxjs'
+import { IStory } from '@storybook/angular'
+
+const UserAddressServiceProvider = {
+  provide: UserAddressService,
+  useClass: class UserAddressServiceMock implements Partial<UserAddressService> {
+    getDeliveryCountries() {
+      return of(<Country[]>[
+        {
+          isocode: 'de',
+          name: 'Germany',
+        },
+        {
+          isocode: 'us',
+          name: 'America',
+        },
+      ])
+    }
+    getRegions() {
+      return of(<Region[]>[
+        {
+          isocode: 'DE-BW',
+          name: 'Baden-Württemberg',
+        },
+        {
+          isocode: 'DE-BY',
+          name: 'Bayern',
+        },
+      ])
+    }
+  },
+}
 
 const UserServiceProvider = {
   provide: UserService,
@@ -16,13 +47,14 @@ const UserServiceProvider = {
     }
   },
 }
-
 export default {
   title: 'Checkout/AddressForm',
-  decorators: [setupSpartacus([AddressFormModule], [UserServiceProvider])],
+  decorators: [
+    setupSpartacus([AddressFormModule], [UserServiceProvider, UserAddressServiceProvider]),
+  ],
 }
 
-export const Default = () => ({
+export const Default = (): IStory => ({
   component: AddressFormComponent,
   props: {
     addressData: {},
@@ -36,7 +68,7 @@ export const Default = () => ({
   },
 })
 
-export const Filled = () => ({
+export const Filled = (): IStory => ({
   component: AddressFormComponent,
   props: {
     addressData: {

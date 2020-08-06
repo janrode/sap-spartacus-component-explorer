@@ -3,7 +3,11 @@ import { action } from '@storybook/addon-actions'
 import { Observable, of } from 'rxjs'
 import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import { Cart, Product, AuthService, WishListService } from '@spartacus/core'
-import { AddToWishListComponent, AddToWishListModule, CurrentProductService } from '@spartacus/storefront'
+import {
+  AddToWishListComponent,
+  AddToWishListModule,
+  CurrentProductService,
+} from '@spartacus/storefront'
 
 let isUserLoggedIn: Observable<boolean>
 let wishlistLoading: Observable<boolean>

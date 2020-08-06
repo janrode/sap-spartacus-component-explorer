@@ -1,6 +1,11 @@
 import { action } from '@storybook/addon-actions'
 import { Observable, of } from 'rxjs'
-import { ConsentTemplate, AnonymousConsent, ANONYMOUS_CONSENT_STATUS, AnonymousConsentsService } from '@spartacus/core'
+import {
+  ConsentTemplate,
+  AnonymousConsent,
+  ANONYMOUS_CONSENT_STATUS,
+  AnonymousConsentsService,
+} from '@spartacus/core'
 
 class AnonymousConsentsServiceMock implements Partial<AnonymousConsentsService> {
   giveConsent = action('giveConsent')

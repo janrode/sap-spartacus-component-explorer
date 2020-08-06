@@ -1,13 +1,20 @@
 import { IStory } from '@storybook/angular'
 import { setupSpartacus } from '../../../spartacusStorybookModuleMetadata'
-import { FooterNavigationComponent, FooterNavigationModule, PageLayoutModule } from '@spartacus/storefront'
+import {
+  FooterNavigationComponent,
+  FooterNavigationModule,
+  PageLayoutModule,
+} from '@spartacus/storefront'
 import { NavigationServiceProvider } from './NavigationServiceProvider'
 import { CmsComponentProvider } from './CmsComponentProvider'
 
 export default {
   title: 'FooterNavigation',
   decorators: [
-    setupSpartacus([FooterNavigationModule, PageLayoutModule], [CmsComponentProvider, NavigationServiceProvider]),
+    setupSpartacus(
+      [FooterNavigationModule, PageLayoutModule],
+      [CmsComponentProvider, NavigationServiceProvider]
+    ),
   ],
   component: FooterNavigationComponent,
 }

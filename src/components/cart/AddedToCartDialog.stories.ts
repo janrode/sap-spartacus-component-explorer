@@ -3,7 +3,11 @@ import { action } from '@storybook/addon-actions'
 import { Observable, of } from 'rxjs'
 import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import { Cart, PromotionResult, ActiveCartService } from '@spartacus/core'
-import { AddedToCartDialogComponent, AddToCartModule, PromotionService } from '@spartacus/storefront'
+import {
+  AddedToCartDialogComponent,
+  AddToCartModule,
+  PromotionService,
+} from '@spartacus/storefront'
 
 const activeCart = of({
   deliveryItemsQuantity: 14,
@@ -32,7 +36,9 @@ const PromotionServiceProvider = {
 
 export default {
   title: 'Cart/AddedToCartDialog',
-  decorators: [setupSpartacus([AddToCartModule], [ActiveCartServiceProvider, PromotionServiceProvider])],
+  decorators: [
+    setupSpartacus([AddToCartModule], [ActiveCartServiceProvider, PromotionServiceProvider]),
+  ],
 }
 
 const defaultEntry = {

@@ -145,7 +145,12 @@ export default {
   decorators: [
     setupSpartacus(
       [CartDetailsModule],
-      [ActiveCartServiceProvider, PromotionServiceProvider, SelectiveCartServiceProvider, AuthServiceProvider]
+      [
+        ActiveCartServiceProvider,
+        PromotionServiceProvider,
+        SelectiveCartServiceProvider,
+        AuthServiceProvider,
+      ]
     ),
   ],
 }

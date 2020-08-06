@@ -16,11 +16,11 @@ import { PaymentFormComponent, PaymentFormModule } from '@spartacus/storefront'
 
 let loading: boolean
 
-let addressVerificationResult
+let addressVerificationResult: string
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
   useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
-    getAddressVerificationResults = (): Observable<AddressValidation | string> =>
+    getAddressVerificationResults = (): Observable<AddressValidation> =>
       of({ decision: addressVerificationResult })
     getDeliveryAddress = (): Observable<Address> =>
       of({
@@ -37,7 +37,8 @@ const CheckoutDeliveryServiceProvider = {
 const UserPaymentServiceProvider = {
   provide: UserPaymentService,
   useClass: class UserPaymentServiceMock implements Partial<UserPaymentService> {
-    getAllBillingCountries = (): Observable<Country[]> => of([{ isocode: 'de' }, { isocode: 'USA' }])
+    getAllBillingCountries = (): Observable<Country[]> =>
+      of([{ isocode: 'de' }, { isocode: 'USA' }])
   },
 }
 

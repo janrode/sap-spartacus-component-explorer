@@ -1,6 +1,9 @@
 import { IStory } from '@storybook/angular'
 import { setupSpartacus } from '../../../spartacusStorybookModuleMetadata'
-import { AnonymousConsentOpenDialogComponent, AnonymousConsentsDialogModule } from '@spartacus/storefront'
+import {
+  AnonymousConsentOpenDialogComponent,
+  AnonymousConsentsDialogModule,
+} from '@spartacus/storefront'
 import { AnonymousConsentsServiceProvider } from '../AnonymousConsentsServiceProvider'
 
 export default {
