@@ -10,7 +10,11 @@ import {
   AuthService,
   SelectiveCartService,
 } from '@spartacus/core'
-import { CartDetailsComponent, CartDetailsModule, PromotionService } from '@spartacus/storefront'
+import {
+  CartDetailsComponent,
+  CartDetailsModule,
+  PromotionService,
+} from '@spartacus/storefront'
 
 const isUserLoggedIn = true
 
@@ -112,7 +116,8 @@ const ActiveCartServiceProvider = {
 
 const SelectiveCartServiceProvider = {
   provide: SelectiveCartService,
-  useClass: class SelectiveCartServiceMock implements Partial<SelectiveCartService> {
+  useClass: class SelectiveCartServiceMock
+    implements Partial<SelectiveCartService> {
     addEntry = action('SelectiveCartServiceProvider:addEntry')
     isEnabled = (): boolean => true
     getLoaded = (): Observable<boolean> => of(true)
@@ -122,8 +127,10 @@ const SelectiveCartServiceProvider = {
 const PromotionServiceProvider = {
   provide: PromotionService,
   useClass: class PromotionServiceMock implements Partial<PromotionService> {
-    getOrderPromotionsFromCart = (): Observable<PromotionResult[]> => of(Array<PromotionResult>())
-    getProductPromotionForEntry = (): Observable<PromotionResult[]> => of(Array<PromotionResult>())
+    getOrderPromotionsFromCart = (): Observable<PromotionResult[]> =>
+      of(Array<PromotionResult>())
+    getProductPromotionForEntry = (): Observable<PromotionResult[]> =>
+      of(Array<PromotionResult>())
     getOrderPromotions = (): Observable<PromotionResult[]> =>
       of([
         { description: 'Buy over $100.00 get free shipping' },

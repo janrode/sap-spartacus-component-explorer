@@ -6,7 +6,12 @@ import { CmsComponentProvider } from './CmsComponentProvider'
 
 export default {
   title: 'Breadcrumb',
-  decorators: [setupSpartacus([BreadcrumbModule], [CmsComponentProvider, PageMetaServiceProvider])],
+  decorators: [
+    setupSpartacus(
+      [BreadcrumbModule],
+      [CmsComponentProvider, PageMetaServiceProvider]
+    ),
+  ],
   component: BreadcrumbComponent,
 }
 

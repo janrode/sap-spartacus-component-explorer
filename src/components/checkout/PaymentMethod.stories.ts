@@ -13,15 +13,20 @@ import {
   CheckoutPaymentService,
   UserPaymentService,
 } from '@spartacus/core'
-import { PaymentMethodComponent, PaymentMethodModule } from '@spartacus/storefront'
+import {
+  PaymentMethodComponent,
+  PaymentMethodModule,
+} from '@spartacus/storefront'
 
 let loading: boolean
 
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
-  useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
-    getAddressVerificationResults = (): Observable<AddressValidation | string> =>
-      of({ decision: 'ACCEPT' })
+  useClass: class CheckoutDeliveryServiceMock
+    implements Partial<CheckoutDeliveryService> {
+    getAddressVerificationResults = (): Observable<
+      AddressValidation | string
+    > => of({ decision: 'ACCEPT' })
     getDeliveryAddress = (): Observable<Address> =>
       of({
         firstName: 'Jensen',
@@ -36,7 +41,8 @@ const CheckoutDeliveryServiceProvider = {
 
 const UserPaymentServiceProvider = {
   provide: UserPaymentService,
-  useClass: class UserPaymentServiceMock implements Partial<UserPaymentService> {
+  useClass: class UserPaymentServiceMock
+    implements Partial<UserPaymentService> {
     getPaymentMethodsLoading = (): Observable<boolean> => of(loading)
     loadPaymentMethods = (): void => {}
     getPaymentMethods = (): Observable<PaymentDetails[]> =>
@@ -67,8 +73,10 @@ const UserPaymentServiceProvider = {
 
 const CheckoutPaymentServiceProvider = {
   provide: CheckoutPaymentService,
-  useClass: class CheckoutPaymentServiceMock implements Partial<CheckoutPaymentService> {
-    getSetPaymentDetailsResultProcess = (): Observable<unknown> => of({ loading })
+  useClass: class CheckoutPaymentServiceMock
+    implements Partial<CheckoutPaymentService> {
+    getSetPaymentDetailsResultProcess = (): Observable<unknown> =>
+      of({ loading })
     paymentProcessSuccess = (): void => {}
     getCardTypes = (): Observable<CardType[]> =>
       of([

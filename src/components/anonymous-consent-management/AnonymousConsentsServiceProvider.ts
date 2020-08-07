@@ -7,10 +7,13 @@ import {
   AnonymousConsentsService,
 } from '@spartacus/core'
 
-class AnonymousConsentsServiceMock implements Partial<AnonymousConsentsService> {
+class AnonymousConsentsServiceMock
+  implements Partial<AnonymousConsentsService> {
   giveConsent = action('giveConsent')
   withdrawConsent = action('withdrawConsent')
-  toggleBannerDismissed = action('AnonymousConsentsService.toggleBannerDismissed')
+  toggleBannerDismissed = action(
+    'AnonymousConsentsService.toggleBannerDismissed'
+  )
   isConsentGiven = (): boolean => true
   isConsentWithdrawn = (): boolean => false
   isBannerVisible = (): Observable<boolean> => of(true)

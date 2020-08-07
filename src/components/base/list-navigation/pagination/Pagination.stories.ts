@@ -2,7 +2,11 @@ import { IStory } from '@storybook/angular'
 import { action } from '@storybook/addon-actions'
 import { number, text } from '@storybook/addon-knobs'
 import { setupSpartacus } from '../../../../spartacusStorybookModuleMetadata'
-import { PaginationComponent, PaginationConfig, PaginationModule } from '@spartacus/storefront'
+import {
+  PaginationComponent,
+  PaginationConfig,
+  PaginationModule,
+} from '@spartacus/storefront'
 import { ActivatedRouteProvider } from './ActivatedRouteProvider'
 
 const PaginationConfigProvider = {
@@ -25,7 +29,10 @@ export default {
   title: 'Base/Pagination',
   component: PaginationComponent,
   decorators: [
-    setupSpartacus([PaginationModule], [ActivatedRouteProvider, PaginationConfigProvider]),
+    setupSpartacus(
+      [PaginationModule],
+      [ActivatedRouteProvider, PaginationConfigProvider]
+    ),
   ],
 }
 

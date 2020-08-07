@@ -37,7 +37,10 @@ const PromotionServiceProvider = {
 export default {
   title: 'Cart/AddedToCartDialog',
   decorators: [
-    setupSpartacus([AddToCartModule], [ActiveCartServiceProvider, PromotionServiceProvider]),
+    setupSpartacus(
+      [AddToCartModule],
+      [ActiveCartServiceProvider, PromotionServiceProvider]
+    ),
   ],
 }
 

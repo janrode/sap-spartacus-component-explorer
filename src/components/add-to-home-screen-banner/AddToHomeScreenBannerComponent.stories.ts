@@ -1,6 +1,9 @@
 import { IStory } from '@storybook/angular'
 import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
-import { AddToHomeScreenBannerComponent, PwaModule } from '@spartacus/storefront'
+import {
+  AddToHomeScreenBannerComponent,
+  PwaModule,
+} from '@spartacus/storefront'
 /*
 import { AddToHomeScreenService } from '@spartacus/storefront';
 

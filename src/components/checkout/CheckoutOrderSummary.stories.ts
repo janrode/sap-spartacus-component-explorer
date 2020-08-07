@@ -2,7 +2,10 @@ import { IStory } from '@storybook/angular'
 import { Observable, of } from 'rxjs'
 import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import { Cart, ActiveCartService } from '@spartacus/core'
-import { CheckoutOrderSummaryComponent, CheckoutOrderSummaryModule } from '@spartacus/storefront'
+import {
+  CheckoutOrderSummaryComponent,
+  CheckoutOrderSummaryModule,
+} from '@spartacus/storefront'
 
 const ActiveCartServiceProvider = {
   provide: ActiveCartService,
@@ -33,7 +36,9 @@ const ActiveCartServiceProvider = {
 
 export default {
   title: 'Checkout/CheckoutOrderSummary',
-  decorators: [setupSpartacus([CheckoutOrderSummaryModule], [ActiveCartServiceProvider])],
+  decorators: [
+    setupSpartacus([CheckoutOrderSummaryModule], [ActiveCartServiceProvider]),
+  ],
 }
 
 export const Default = (): IStory => ({

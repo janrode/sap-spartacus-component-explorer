@@ -4,7 +4,11 @@ import { Observable, of } from 'rxjs'
 import { FormControl } from '@angular/forms'
 import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import { OrderEntry, PromotionResult } from '@spartacus/core'
-import { CartItemComponent, CartSharedModule, PromotionService } from '@spartacus/storefront'
+import {
+  CartItemComponent,
+  CartSharedModule,
+  PromotionService,
+} from '@spartacus/storefront'
 
 const PromotionServiceProvider = {
   provide: PromotionService,

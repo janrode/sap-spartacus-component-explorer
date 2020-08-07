@@ -20,7 +20,9 @@ const WishListServiceProvider = {
     removeEntry = action('removeEntry')
     getWishList = (): Observable<Cart> =>
       of({
-        entries: [{ product: { code: productAlreadyInWishlist ? '123' : '456' } }],
+        entries: [
+          { product: { code: productAlreadyInWishlist ? '123' : '456' } },
+        ],
       })
     getWishListLoading = (): Observable<boolean> => wishlistLoading
   },
@@ -28,7 +30,8 @@ const WishListServiceProvider = {
 
 const CurrentProductServiceProvider = {
   provide: CurrentProductService,
-  useClass: class CurrentProductServiceMock implements Partial<CurrentProductService> {
+  useClass: class CurrentProductServiceMock
+    implements Partial<CurrentProductService> {
     getProduct = (): Observable<Product | null> =>
       of({
         code: '123',
@@ -53,7 +56,11 @@ export default {
   decorators: [
     setupSpartacus(
       [AddToWishListModule],
-      [WishListServiceProvider, CurrentProductServiceProvider, AuthServiceProvider]
+      [
+        WishListServiceProvider,
+        CurrentProductServiceProvider,
+        AuthServiceProvider,
+      ]
     ),
   ],
 }

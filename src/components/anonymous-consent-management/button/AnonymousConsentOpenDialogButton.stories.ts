@@ -8,7 +8,12 @@ import { AnonymousConsentsServiceProvider } from '../AnonymousConsentsServicePro
 
 export default {
   title: 'AnonymousConsentOpenDialogButton',
-  decorators: [setupSpartacus([AnonymousConsentsDialogModule], [AnonymousConsentsServiceProvider])],
+  decorators: [
+    setupSpartacus(
+      [AnonymousConsentsDialogModule],
+      [AnonymousConsentsServiceProvider]
+    ),
+  ],
   parameters: {
     backgrounds: [{ name: 'default', value: '#454545', default: true }],
   },

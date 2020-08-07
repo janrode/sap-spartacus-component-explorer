@@ -1,5 +1,8 @@
 import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
-import { ShippingAddressComponent, ShippingAddressModule } from '@spartacus/storefront'
+import {
+  ShippingAddressComponent,
+  ShippingAddressModule,
+} from '@spartacus/storefront'
 import {
   Address,
   AddressValidation,
@@ -53,7 +56,8 @@ const addresses = [
 ]
 const UserAddressServiceProvider = {
   provide: UserAddressService,
-  useClass: class UserAddressServiceMock implements Partial<UserAddressService> {
+  useClass: class UserAddressServiceMock
+    implements Partial<UserAddressService> {
     getAddressesLoading = (): Observable<boolean> => of(isLoading)
     getAddresses = (): Observable<Address[]> => of(addresses)
     loadAddresses = () => {}
@@ -75,11 +79,13 @@ const UserAddressServiceProvider = {
 
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
-  useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
+  useClass: class CheckoutDeliveryServiceMock
+    implements Partial<CheckoutDeliveryService> {
     setDeliveryAddress = action('setDeliveryAddress ')
     getDeliveryAddress = (): Observable<Address> => of(addresses[0])
     clearAddressVerificationResults = () => {}
-    getAddressVerificationResults = (): Observable<AddressValidation> => of({ decision: 'SUCCESS' })
+    getAddressVerificationResults = (): Observable<AddressValidation> =>
+      of({ decision: 'SUCCESS' })
   },
 }
 

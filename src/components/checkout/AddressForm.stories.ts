@@ -2,13 +2,19 @@ import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
 import { AddressFormComponent, AddressFormModule } from '@spartacus/storefront'
 import { action } from '@storybook/addon-actions'
 import { boolean, text } from '@storybook/addon-knobs'
-import { Country, Region, UserAddressService, UserService } from '@spartacus/core'
+import {
+  Country,
+  Region,
+  UserAddressService,
+  UserService,
+} from '@spartacus/core'
 import { of } from 'rxjs'
 import { IStory } from '@storybook/angular'
 
 const UserAddressServiceProvider = {
   provide: UserAddressService,
-  useClass: class UserAddressServiceMock implements Partial<UserAddressService> {
+  useClass: class UserAddressServiceMock
+    implements Partial<UserAddressService> {
     getDeliveryCountries() {
       return of(<Country[]>[
         {
@@ -50,7 +56,10 @@ const UserServiceProvider = {
 export default {
   title: 'Checkout/AddressForm',
   decorators: [
-    setupSpartacus([AddressFormModule], [UserServiceProvider, UserAddressServiceProvider]),
+    setupSpartacus(
+      [AddressFormModule],
+      [UserServiceProvider, UserAddressServiceProvider]
+    ),
   ],
 }
 

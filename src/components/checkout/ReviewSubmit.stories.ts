@@ -14,7 +14,11 @@ import {
   CheckoutPaymentService,
   UserAddressService,
 } from '@spartacus/core'
-import { PromotionService, ReviewSubmitComponent, ReviewSubmitModule } from '@spartacus/storefront'
+import {
+  PromotionService,
+  ReviewSubmitComponent,
+  ReviewSubmitModule,
+} from '@spartacus/storefront'
 
 const cartEntries: OrderEntry[] = [
   {
@@ -97,7 +101,8 @@ const cartEntries: OrderEntry[] = [
 
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
-  useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
+  useClass: class CheckoutDeliveryServiceMock
+    implements Partial<CheckoutDeliveryService> {
     getDeliveryAddress = (): Observable<Address> =>
       of({
         firstName: 'Jensen',
@@ -122,7 +127,8 @@ const CheckoutDeliveryServiceProvider = {
 
 const CheckoutPaymentServiceProvider = {
   provide: CheckoutPaymentService,
-  useClass: class CheckoutPaymentServiceMock implements Partial<CheckoutPaymentService> {
+  useClass: class CheckoutPaymentServiceMock
+    implements Partial<CheckoutPaymentService> {
     getPaymentDetails = (): Observable<PaymentDetails> =>
       of({
         id: '1',
@@ -138,8 +144,10 @@ const CheckoutPaymentServiceProvider = {
 
 const UserAddressServiceProvider = {
   provide: UserAddressService,
-  useClass: class UserAddressServiceMock implements Partial<UserAddressService> {
-    getCountry = (): Observable<Country> => of({ isocode: 'DE', name: 'Germany' })
+  useClass: class UserAddressServiceMock
+    implements Partial<UserAddressService> {
+    getCountry = (): Observable<Country> =>
+      of({ isocode: 'DE', name: 'Germany' })
     loadDeliveryCountries = (): void => {}
   },
 }

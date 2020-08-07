@@ -12,7 +12,10 @@ import {
   ActiveCartService,
   SelectiveCartService,
 } from '@spartacus/core'
-import { SaveForLaterComponent, SaveForLaterModule } from '@spartacus/storefront'
+import {
+  SaveForLaterComponent,
+  SaveForLaterModule,
+} from '@spartacus/storefront'
 
 let cartEntries: OrderEntry[]
 const defaultEntries: OrderEntry[] = [
@@ -116,7 +119,8 @@ const ActiveCartServiceProvider = {
 
 const SelectiveCartServiceProvider = {
   provide: SelectiveCartService,
-  useClass: class SelectiveCartServiceMock implements Partial<SelectiveCartService> {
+  useClass: class SelectiveCartServiceMock
+    implements Partial<SelectiveCartService> {
     removeEntry = action('SelectiveCartServiceProvider:removeEntry')
     getCart = (): Observable<Cart> =>
       of({
@@ -136,7 +140,8 @@ const mockCmsComponent: CmsParagraphComponent = {
 const CmsServiceProvider = {
   provide: CmsService,
   useClass: class CmsServiceMock implements Partial<CmsService> {
-    getComponentData = <T extends CmsComponent>(): Observable<T> => of(mockCmsComponent as T)
+    getComponentData = <T extends CmsComponent>(): Observable<T> =>
+      of(mockCmsComponent as T)
     getCurrentPage = (): Observable<Page> => of({})
   },
 }
@@ -146,7 +151,11 @@ export default {
   decorators: [
     setupSpartacus(
       [SaveForLaterModule],
-      [ActiveCartServiceProvider, SelectiveCartServiceProvider, CmsServiceProvider]
+      [
+        ActiveCartServiceProvider,
+        SelectiveCartServiceProvider,
+        CmsServiceProvider,
+      ]
     ),
   ],
 }

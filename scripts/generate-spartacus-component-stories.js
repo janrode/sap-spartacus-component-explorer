@@ -10,7 +10,11 @@ const options = {
   filter: ['**/!(*.module.d.ts|index.d.ts)'],
 }
 
-copy('../node_modules/@spartacus/storefront/cms-components/', '../sparta-stories', options)
+copy(
+  '../node_modules/@spartacus/storefront/cms-components/',
+  '../sparta-stories',
+  options
+)
   .on(copy.events.COPY_FILE_START, function (copyOperation) {
     console.info('Copying file ' + copyOperation.src + '...')
   })

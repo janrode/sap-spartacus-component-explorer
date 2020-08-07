@@ -1,6 +1,9 @@
 import { IStory } from '@storybook/angular'
 import { setupSpartacus } from '../../spartacusStorybookModuleMetadata'
-import { AddressFormModule, SuggestedAddressDialogComponent } from '@spartacus/storefront'
+import {
+  AddressFormModule,
+  SuggestedAddressDialogComponent,
+} from '@spartacus/storefront'
 
 export default {
   title: 'Checkout/SuggestedAddressDialog',

@@ -27,9 +27,11 @@ const defaultCustomerCoupons = {
 }
 const CustomerCouponServiceProvider = {
   provide: CustomerCouponService,
-  useClass: class CustomerCouponServiceMock implements Partial<CustomerCouponService> {
+  useClass: class CustomerCouponServiceMock
+    implements Partial<CustomerCouponService> {
     loadCustomerCoupons = (): void => {}
-    getCustomerCoupons = (): Observable<CustomerCouponSearchResult> => of(customerCoupons)
+    getCustomerCoupons = (): Observable<CustomerCouponSearchResult> =>
+      of(customerCoupons)
   },
 }
 
@@ -53,7 +55,8 @@ const ActiveCartServiceProvider = {
 
 const CartVoucherServiceProvider = {
   provide: CartVoucherService,
-  useClass: class CartVoucherServiceMock implements Partial<CartVoucherService> {
+  useClass: class CartVoucherServiceMock
+    implements Partial<CartVoucherService> {
     addVoucher = action('addVoucher')
     removeVoucher = action('removeVoucher')
     resetAddVoucherProcessingState = (): void => {}
@@ -67,7 +70,11 @@ export default {
   decorators: [
     setupSpartacus(
       [CartCouponModule],
-      [CustomerCouponServiceProvider, ActiveCartServiceProvider, CartVoucherServiceProvider]
+      [
+        CustomerCouponServiceProvider,
+        ActiveCartServiceProvider,
+        CartVoucherServiceProvider,
+      ]
     ),
   ],
 }

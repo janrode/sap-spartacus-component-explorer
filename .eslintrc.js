@@ -9,7 +9,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
@@ -32,7 +31,6 @@ module.exports = {
       'error',
       { type: 'element', prefix: 'app', style: 'kebab-case' },
     ],
-    '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/no-empty-function': [
       'error',

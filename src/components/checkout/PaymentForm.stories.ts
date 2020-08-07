@@ -19,7 +19,8 @@ let loading: boolean
 let addressVerificationResult: string
 const CheckoutDeliveryServiceProvider = {
   provide: CheckoutDeliveryService,
-  useClass: class CheckoutDeliveryServiceMock implements Partial<CheckoutDeliveryService> {
+  useClass: class CheckoutDeliveryServiceMock
+    implements Partial<CheckoutDeliveryService> {
     getAddressVerificationResults = (): Observable<AddressValidation> =>
       of({ decision: addressVerificationResult })
     getDeliveryAddress = (): Observable<Address> =>
@@ -36,7 +37,8 @@ const CheckoutDeliveryServiceProvider = {
 
 const UserPaymentServiceProvider = {
   provide: UserPaymentService,
-  useClass: class UserPaymentServiceMock implements Partial<UserPaymentService> {
+  useClass: class UserPaymentServiceMock
+    implements Partial<UserPaymentService> {
     getAllBillingCountries = (): Observable<Country[]> =>
       of([{ isocode: 'de' }, { isocode: 'USA' }])
   },
@@ -44,8 +46,10 @@ const UserPaymentServiceProvider = {
 
 const CheckoutPaymentServiceProvider = {
   provide: CheckoutPaymentService,
-  useClass: class CheckoutPaymentServiceMock implements Partial<CheckoutPaymentService> {
-    getSetPaymentDetailsResultProcess = (): Observable<unknown> => of({ loading })
+  useClass: class CheckoutPaymentServiceMock
+    implements Partial<CheckoutPaymentService> {
+    getSetPaymentDetailsResultProcess = (): Observable<unknown> =>
+      of({ loading })
     getCardTypes = (): Observable<CardType[]> =>
       of([
         {
@@ -74,7 +78,11 @@ export default {
   decorators: [
     setupSpartacus(
       [PaymentFormModule],
-      [CheckoutPaymentServiceProvider, CheckoutDeliveryServiceProvider, UserPaymentServiceProvider]
+      [
+        CheckoutPaymentServiceProvider,
+        CheckoutDeliveryServiceProvider,
+        UserPaymentServiceProvider,
+      ]
     ),
   ],
 }
